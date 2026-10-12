@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using GalgameManager.WinApp.Base.Contracts;
 using GalgameManager.WinApp.Base.Contracts.PluginUi;
+using GalgameManager.WinApp.Base.Models;
 using Microsoft.UI.Xaml;
 
 namespace PotatoVN.ExternalPlayTime;

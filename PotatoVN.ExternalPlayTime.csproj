@@ -11,6 +11,8 @@
     <!--AssemblyName必须与插件Id一致（A{id}），否则会和其他插件冲突-->
     <AssemblyName>A9dba97f8-9d2d-46da-9d24-cf3726202886</AssemblyName>
     <NoWarn>MVVMTK0045</NoWarn>
+    <!--submodule 里的 PotatoVN 宿主源码与资源不能进入插件的编译与 PRI 资源索引，只作为 ProjectReference 引用-->
+    <DefaultItemExcludes>$(DefaultItemExcludes);PotatoVN\**</DefaultItemExcludes>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -132,7 +134,7 @@ StampedFiles = stampedFiles.ToArray();
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PotatoVN\GalgameManager.WinApp.Base\GalgameManager.WinApp.Base.csproj">
+    <ProjectReference Include="PotatoVN\GalgameManager.WinApp.Base\GalgameManager.WinApp.Base.csproj">
       <Private>false</Private>
     </ProjectReference>
   </ItemGroup>
@@ -158,6 +160,8 @@ StampedFiles = stampedFiles.ToArray();
 
     <ItemGroup>
       <_PluginSourceFiles Include="$(_PluginSourceDir)**\*.*" />
+      <!--以插件 Id 命名的子目录里是宿主 submodule 的资源（图标/图片），插件运行不需要，打包时排除-->
+      <_PluginSourceFiles Remove="$(_PluginSourceDir)$(AssemblyName)\**" />
     </ItemGroup>
 
     <Copy SourceFiles="@(_PluginSourceFiles)" DestinationFiles="@(_PluginSourceFiles->'$(_PluginTempDir)%(RecursiveDir)%(Filename)%(Extension)')" />
