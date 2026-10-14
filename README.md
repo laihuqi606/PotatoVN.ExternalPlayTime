@@ -29,7 +29,7 @@ PotatoVN 只在从软件内部启动游戏时计时。如果你习惯直接双�
 本仓库用 submodule 引入了 PotatoVN 源码，克隆时记得带 submodule：
 
 ```bash
-git clone --recurse-submodules <本仓库地址>
+git clone --recurse-submodules https://github.com/laihuqi606/PotatoVN.ExternalPlayTime.git
 
 # 或者已经克隆过的话：
 git submodule update --init --recursive
@@ -56,3 +56,10 @@ git submodule update --init --recursive
 自行分发的话，把 Release 编译出来的 `artifacts/plugin.pvnplugin.zip` 发给别人就行。
 想进 PotatoVN 插件市场，参考官方的发布文档（potatovn.net/development/client-plugin/deploy-manage.html）：
 在插件平台创建插件项目，审核通过后上传 `plugin.pvnplugin.zip` 和版本号。
+
+## 许可证
+
+本项目采用 [Apache-2.0](LICENSE) 许可证。
+
+插件引用了 PotatoVN 宿主源码（通过 submodule 引入，同样为 Apache-2.0），
+在此致谢 [GoldenPotato137/PotatoVN](https://github.com/GoldenPotato137/PotatoVN)。
